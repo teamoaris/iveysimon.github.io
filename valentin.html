@@ -1,0 +1,3128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>¿Aceptas ser mi 14 de febrero?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="6212896.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #e8dff3;             
+      --bg-soft: #ead7e6;        
+      --card: #f6e9f4;           
+      --accent: #e8a2c1;          
+      --accent-soft: #f3c7db;
+      --text-main: #4f3e50;       
+      --text-soft: #7d6b7e;
+      --radius-xl: 30px;
+      --radius-md: 18px;
+      --shadow-soft: 0 24px 55px rgba(80, 60, 90, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Baloo 2", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #e8dff4, #f4e6f1);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.08;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 182, 206, 0.08) 0%, transparent 70%);
+      top: 10%;
+      left: 5%;
+      filter: blur(80px);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 143, 177, 0.06) 0%, transparent 70%);
+      bottom: 15%;
+      right: 8%;
+      filter: blur(100px);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bubble-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #f4c9e6);
+      filter: blur(1px);
+      animation: float 32s linear infinite;
+    }
+
+    .bubble:nth-child(1) {
+      width: 120px;
+      height: 120px;
+      left: 10%;
+      top: 20%;
+      animation-duration: 28s;
+    }
+
+    .bubble:nth-child(2) {
+      width: 80px;
+      height: 80px;
+      right: 15%;
+      bottom: 30%;
+      animation-duration: 32s;
+      animation-delay: -4s;
+    }
+
+    .bubble:nth-child(3) { width: 180px; height: 180px; top: 45%; left: -70px; animation-duration: 30s; }
+    .bubble:nth-child(4) { width: 200px; height: 200px; bottom: 15%; right: 14%; animation-duration: 34s; }
+    .bubble:nth-child(5) { width: 90px; height: 90px; right: 25%; top: 10%; animation-duration: 26s; animation-delay: -8s; }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+      to { transform: translateY(0); }
+    }
+
+    .heart-particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .heart-particles::before,
+    .heart-particles::after {
+      content: "💗";
+      position: absolute;
+      font-size: 28px;
+      opacity: 0.4;
+      animation: floatHearts 14s infinite ease-in-out;
+    }
+
+    .heart-particles::after {
+      left: 80%;
+      top: 20%;
+      animation-duration: 18s;
+      opacity: 0.35;
+    }
+
+    @keyframes floatHearts {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.15); opacity: .6; }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    /* Mamegoma flotando */
+    .mamegoma-left {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 80px;
+      height: 80px;
+      z-index: 10;
+      animation: floatSide 4s ease-in-out infinite;
+    }
+
+    .mamegoma-right {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 80px;
+      height: 80px;
+      z-index: 10;
+      animation: floatSide 4s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatSide {
+      0%, 100% { transform: translateY(-50%) translateX(0); }
+      50% { transform: translateY(-50%) translateX(-10px); }
+    }
+
+    /* Primera pantalla */
+    #intro-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #d8c9ea, #f4d8e6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      transition: opacity 0.6s ease;
+    }
+
+    .intro-card {
+      background: rgba(255, 255, 255, 0.18);
+      padding: 44px 60px;
+      border-radius: 26px;
+      backdrop-filter: blur(14px);
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(80, 60, 90, 0.20);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .intro-title {
+      font-size: 1.9rem;
+      color: #4d3a50;
+      margin-bottom: 12px;
+    }
+
+    .intro-sub {
+      font-size: 1rem;
+      color: #6b556e;
+      line-height: 1.5;
+      margin-bottom: 26px;
+    }
+
+    .intro-open-btn {
+      border: none;
+      padding: 12px 26px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: linear-gradient(135deg, #f6b1ca, #f8cddd);
+      color: #4d3a50;
+      box-shadow: 0 14px 26px rgba(235,140,170,0.25);
+      transition: 0.25s;
+    }
+
+    .intro-open-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 32px rgba(235,140,170,0.32);
+    }
+
+    .intro-mymelody {
+      width: 100px;
+      opacity: 0.95;
+      display: block;
+      margin: 0 auto 18px auto;  
+    }
+
+    /* Segunda pantalla */
+    #main-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    #main-screen.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .main-card {
+      background: linear-gradient(135deg, rgba(252, 240, 248, 0.98), rgba(255, 245, 250, 0.95));
+      border-radius: 32px;
+      box-shadow: 0 15px 45px rgba(80, 60, 90, 0.18), 
+                  0 0 0 1px rgba(255, 182, 206, 0.12),
+                  inset 0 0 15px rgba(255, 182, 206, 0.05);
+      padding: 5rem 4rem;
+      text-align: center;
+      backdrop-filter: blur(25px);
+      width: min(95vw, 1000px);
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .main-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    .question-title {
+      font-size: clamp(2.4rem, 3.2vw, 3.2rem);
+      color: #4d3a50;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #ff6b9c, #ff9fb5, #ffb8d7);
+      background-clip: text;             
+      -webkit-background-clip: text;      
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 0 25px rgba(255, 107, 156, 0.25);
+      font-weight: 600;
+    }
+
+    .question-subtitle {
+      font-size: 1.15rem;
+      color: #7d6b7e;
+      margin-bottom: 38px;
+      opacity: 0.8;
+      position: relative;
+      z-index: 1;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 0;
+    }
+
+    .answer-btn {
+      border: none;
+      padding: 30px 75px;
+      border-radius: 9999px;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: "Baloo 2";
+      position: relative;
+      overflow: visible;
+      letter-spacing: 0.4px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #ff9fb5, #ff8fb1);
+      box-shadow: 0 4px 15px rgba(255, 92, 138, 0.09),
+                  0 0 5px rgba(255, 143, 177, 0.04);
+      transform-origin: center;
+    }
+
+    .answer-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      background-image: url("assets/cinnamoroll_pattern.png");
+      background-repeat: repeat;
+      background-size: 100px;
+      opacity: 0.25;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .answer-btn span {
+      position: relative;
+      z-index: 3;
+    }
+
+    .answer-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(255, 92, 138, 0.12),
+                  0 0 6px rgba(255, 143, 177, 0.06);
+    }
+
+    .answer-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255, 92, 138, 0.2),
+                  inset 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Decorative Sanrio characters */
+    .sanrio-decoration {
+      position: absolute;
+      pointer-events: none;
+      z-index: 2;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,0.10));
+      border-radius: 8px;
+    }
+
+    .pochacco-sticker {
+      bottom: 16px;
+      left: 16px;
+      width: 58px;
+      height: auto;
+      animation: floatLeft 10s ease-in-out infinite;
+      transform: rotate(-5deg);
+    }
+
+    .kurin-sticker {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 50px;
+      height: auto;
+      animation: floatRight 9s ease-in-out infinite;
+      transform: rotate(4deg);
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+    }
+
+    @keyframes floatLeft {
+      0%, 100% { transform: translateY(0px) rotate(-5deg); }
+      50% { transform: translateY(-8px) rotate(-2deg); }
+    }
+
+    @keyframes floatRight {
+      0%, 100% { transform: translateY(0px) rotate(6deg); }
+      50% { transform: translateY(-6px) rotate(3deg); }
+    }
+
+    /* Floating hearts animation */
+    .answer-btn .floating-heart {
+      position: absolute;
+      font-size: 0.8rem;
+      opacity: 0;
+      pointer-events: none;
+      animation: floatUp 2s ease-out;
+      z-index: 10;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+      }
+      15% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.5);
+      }
+    }
+
+    #btn-yes {
+      background: linear-gradient(135deg, #ff8fb1, #ff5c8a);
+      color: #fff;
+      box-shadow: 0 8px 25px rgba(255, 92, 138, 0.4),
+                  0 0 20px rgba(255, 143, 177, 0.3),
+                  0 0 40px rgba(255, 143, 177, 0.15);
+      transform-origin: center;
+    }
+
+    #btn-yes:hover {
+      transform: translateY(-3px) scale(1.05) !important;
+      box-shadow: 0 12px 35px rgba(255, 92, 138, 0.5),
+                  0 0 30px rgba(255, 143, 177, 0.4),
+                  0 0 60px rgba(255, 143, 177, 0.2) !important;
+    }
+
+    #btn-yes:active {
+      transform: translateY(-1px) scale(1.02) !important;
+      box-shadow: 0 6px 20px rgba(255, 92, 138, 0.4),
+                  0 0 15px rgba(255, 143, 177, 0.3),
+                  inset 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .no-option-text {
+      text-align: center;
+      margin-top: 24px;
+      opacity: 0;
+      animation: fadeInText 1s ease-out 0.5s forwards;
+    }
+
+    .no-text {
+      font-size: 0.8rem;
+      color: #e678a8;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      text-shadow: 0 1px 3px rgba(230, 120, 168, 0.15);
+      opacity: 0.65;
+    }
+
+    .no-text::before {
+      content: "💕";
+      margin-right: 6px;
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    @keyframes fadeInText {
+      0% { 
+        opacity: 0; 
+        transform: translateY(10px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0);
+      }
+    }
+
+    #btn-no.transforming {
+      animation: transformToYes 2s ease-in-out forwards;
+    }
+
+    @keyframes transformToYes {
+      0% { 
+        transform: scale(1) rotate(0deg);
+        background: linear-gradient(135deg, #ff9fc8, #ffbddb);
+        color: #5a4557;
+      }
+      25% {
+        transform: scale(0.8) rotate(-5deg);
+        background: linear-gradient(135deg, #ffa8c8, #ffc8db);
+      }
+      50% {
+        transform: scale(0.6) rotate(5deg);
+        background: linear-gradient(135deg, #ff8bb8, #ffadb8);
+        color: #fff;
+      }
+      75% {
+        transform: scale(0.9) rotate(-2deg);
+        background: linear-gradient(135deg, #ff7ab8, #ff9fb5);
+      }
+      100% { 
+        transform: scale(1) rotate(0deg);
+        background: linear-gradient(135deg, #ff6b9c, #ff9fb5);
+        color: #fff;
+        box-shadow: 0 15px 35px rgba(255, 107, 156, 0.4);
+      }
+    }
+
+    #btn-no.transformed {
+      border: none;
+      padding: 18px 42px;
+      border-radius: 9999px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: "Baloo 2";
+      position: relative;
+      overflow: visible;
+      letter-spacing: 0.4px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #ff8fb1, #ff5c8a) !important;
+      box-shadow: 0 8px 25px rgba(255, 92, 138, 0.4),
+                  0 0 20px rgba(255, 143, 177, 0.3),
+                  0 0 40px rgba(255, 143, 177, 0.15) !important;
+      transform-origin: center;
+      transform: scale(1) !important;
+      min-width: fit-content;
+      max-width: none;
+      width: auto;
+    }
+
+    #btn-no.transformed::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+      transform: translate(-50%, -50%);
+      transition: width 0.8s, height 0.8s;
+    }
+
+    #btn-no.transformed:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    #btn-no.transformed::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    #btn-no.transformed:hover::after {
+      opacity: 1;
+    }
+
+    #btn-no.transformed:hover {
+      transform: translateY(-3px) scale(1.05) !important;
+      box-shadow: 0 12px 35px rgba(255, 92, 138, 0.5),
+                  0 0 30px rgba(255, 143, 177, 0.4),
+                  0 0 60px rgba(255, 143, 177, 0.2) !important;
+    }
+
+    #btn-no.transformed:active {
+      transform: translateY(-1px) scale(1.02) !important;
+      box-shadow: 0 6px 20px rgba(255, 92, 138, 0.4),
+                  0 0 15px rgba(255, 143, 177, 0.3),
+                  inset 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .funny-message {
+      position: absolute;
+      top: -85px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,240,248,0.95));
+      padding: 12px 20px;
+      border-radius: 24px;
+      font-size: 0.9rem;
+      color: #ff6b9c;
+      box-shadow: 0 10px 30px rgba(255, 107, 156, 0.35),
+                  0 0 0 1px rgba(255, 182, 206, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      white-space: nowrap;
+      border: 2px solid rgba(255, 182, 206, 0.25);
+      backdrop-filter: blur(12px);
+      font-weight: 500;
+    }
+
+    .funny-message.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-8px);
+    }
+
+    .funny-message::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid rgba(255, 240, 248, 0.95);
+    }
+
+    .hearts-decoration {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.35;
+      animation: floatHeart 4s ease-in-out infinite;
+      filter: drop-shadow(0 3px 6px rgba(255, 107, 156, 0.25));
+    }
+
+    .hearts-decoration:nth-child(1) { top: 15px; left: 15px; animation-delay: 0s; }
+    .hearts-decoration:nth-child(2) { top: 15px; right: 15px; animation-delay: 1.2s; }
+    .hearts-decoration:nth-child(3) { bottom: 15px; left: 20px; animation-delay: 2.4s; }
+    .hearts-decoration:nth-child(4) { bottom: 15px; right: 20px; animation-delay: 0.8s; }
+    .hearts-decoration:nth-child(5) { top: 50%; left: 10%; animation-delay: 1.6s; }
+    .hearts-decoration:nth-child(6) { bottom: 50%; right: 10%; animation-delay: 2.4s; }
+
+    .mymelody-sticker {
+      display: block;
+      margin: 0 auto 14px auto;
+      width: 65px;
+      height: auto;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px) rotate(-8deg); }
+      50% { transform: translateY(-6px) rotate(-6deg); }
+    }
+
+    @keyframes floatHeart {
+      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+      25% { transform: translateY(-8px) rotate(5deg) scale(1.1); }
+      50% { transform: translateY(-15px) rotate(-3deg) scale(1.05); }
+      75% { transform: translateY(-8px) rotate(3deg) scale(1.08); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: sparkle 3s linear infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Pantalla de éxito */
+    #book-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232, 221, 244, 0.98), rgba(244, 230, 241, 0.95));
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    #book-screen.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .book-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      font-family: "Baloo 2", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      height: 100vh;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 2rem;
+    }
+
+    .book-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(255, 182, 206, 0.15), rgba(255, 143, 177, 0.1));
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(80, 60, 90, 0.1);
+    }
+
+    .book-title {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ff6b9c, #ff9fb5, #ffb8d7);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    .back-btn {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #ff9fb5, #ff8fb1);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 92, 138, 0.2);
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 92, 138, 0.3);
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(80, 60, 90, 0.1);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      color: #7d6b7e;
+      border: none;
+      border-radius: 15px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #ff9fb5, #ff8fb1);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 92, 138, 0.2);
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: rgba(255, 182, 206, 0.2);
+      color: #ff6b9c;
+    }
+
+    .tab-content {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(80, 60, 90, 0.1);
+      min-height: 500px;
+    }
+
+    .tab-panel {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Fotos tab */
+    .fotos-container {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      height: 100%;
+    }
+
+    .polaroid-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+      max-height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .fotos-decoration {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      height: 100%;
+      position: sticky;
+      top: 0;
+    }
+
+    .fotos-decoration-img {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      object-fit: contain;
+      animation: float-decoration 6s ease-in-out infinite;
+    }
+
+    @keyframes float-decoration {
+      0%, 100% {
+        transform: translateY(0px) rotate(-2deg);
+      }
+      50% {
+        transform: translateY(-15px) rotate(2deg);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .fotos-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .fotos-decoration {
+        order: -1;
+        max-width: 300px;
+        margin: 0 auto;
+        height: auto;
+        position: static;
+      }
+
+      .fotos-decoration-img {
+        max-width: 250px;
+      }
+
+      .polaroid-grid {
+        max-height: none;
+        overflow-y: visible;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .fotos-decoration {
+        display: none;
+      }
+    }
+
+    .polaroid {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .polaroid::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 20px;
+      background: rgba(255, 182, 206, 0.3);
+      border-radius: 4px;
+    }
+
+    .polaroid:nth-child(odd) {
+      transform: rotate(-2deg);
+    }
+
+    .polaroid:nth-child(even) {
+      transform: rotate(2deg);
+    }
+
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.05);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .polaroid-caption {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #7d6b7e;
+      font-weight: 500;
+    }
+
+    .polaroid.image-error {
+      background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 250px;
+      position: relative;
+    }
+
+    .polaroid.image-error::before {
+      content: "📷";
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.6;
+    }
+
+    .polaroid.image-error::after {
+      content: "Foto no encontrada";
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #6c5ce7;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .polaroid.image-error .polaroid-caption {
+      position: absolute;
+      bottom: -40px;
+      background: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Cartitas tab - Preview cards */
+    .cartitas-container {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      height: 100%;
+    }
+
+    .letters-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cartitas-decoration {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      height: 100%;
+      position: sticky;
+      top: 0;
+    }
+
+    .cartitas-decoration-img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      object-fit: contain;
+      animation: float-decoration 6s ease-in-out infinite;
+    }
+
+    @media (max-width: 1024px) {
+      .cartitas-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .cartitas-decoration {
+        order: -1;
+        max-width: 300px;
+        margin: 0 auto;
+        height: auto;
+        position: static;
+      }
+
+      .cartitas-decoration-img {
+        max-width: 250px;
+      }
+
+      .letters-container {
+        max-height: none;
+        overflow-y: visible;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cartitas-decoration {
+        display: none;
+      }
+    }
+
+    .letter-card {
+      background: linear-gradient(135deg, #fff8f3, #fff5e6);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .letter-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 10px,
+          rgba(255, 182, 193, 0.03) 10px,
+          rgba(255, 182, 193, 0.03) 20px
+        );
+      pointer-events: none;
+    }
+
+    .letter-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .letter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter-header h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #4d3a50;
+    }
+
+    .letter-date {
+      font-size: 0.9rem;
+      color: #8b7a8a;
+      font-weight: 500;
+    }
+
+    .letter-preview {
+      padding: 0 1.5rem 1rem;
+      color: #6b556e;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      opacity: 0.8;
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter-full-text {
+      display: none;
+    }
+
+    .letter-read-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      color: #ff8fb1;
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter-card:hover .letter-read-hint {
+      opacity: 1;
+    }
+
+    /* Letter modal */
+    .letter-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .letter-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .letter-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+    }
+
+    .letter-note {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.98);
+      background: linear-gradient(135deg, #fff7f9, #fffaf2);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      width: min(92vw, 900px);
+      height: min(85vh, 720px);
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .letter-modal.active .letter-note {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    @media (max-width: 768px) {
+      .letter-note {
+        width: 92vw;
+        height: 80vh;
+      }
+    }
+
+    .letter-note::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 182, 193, 0.02) 2px,
+          rgba(255, 182, 193, 0.02) 4px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 182, 193, 0.02) 2px,
+          rgba(255, 182, 193, 0.02) 4px
+        );
+      border-radius: 24px;
+      pointer-events: none;
+    }
+
+    .letter-tape {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 30px;
+      background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 143, 177, 0.2));
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .letter-heart-watermark {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-size: 4rem;
+      opacity: 0.05;
+      transform: rotate(-15deg);
+    }
+
+    .letter-note-header {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 12px;
+      padding: 2rem 2rem 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter-note-title {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #4d3a50;
+    }
+
+    .letter-note-date {
+      font-size: 1rem;
+      color: #8b7a8a;
+      font-weight: 500;
+    }
+
+    .letter-note-close {
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      color: #ff8fb1;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .letter-note-close:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .letter-note-body {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 0 2rem 2rem;
+      position: relative;
+      z-index: 2;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .letter-note-content {
+      padding: 25px 35px;
+      color: #4d3a50;
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .letter-note-content p {
+      margin: 0 0 14px 0;
+      line-height: 1.6;
+      text-indent: 0;
+      text-align: left;
+    }
+
+    .letter-note-content p:first-child {
+      margin-top: 0;
+    }
+
+    .letter-note-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tab-content {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 1rem;
+    }
+
+    /* Fechas tab */
+    .fechas-layout {
+      display: flex;
+      gap: 3rem;
+      align-items: start;
+      height: 100%;
+    }
+
+    .fechas-content {
+      width: 60%;
+      max-height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+
+    .fechas-image {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+
+    .fechas-image img {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      object-fit: contain;
+      animation: float-decoration 6s ease-in-out infinite;
+    }
+
+    @media (max-width: 1024px) {
+      .fechas-layout {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .fechas-content {
+        width: 100%;
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .fechas-image {
+        width: 100%;
+        position: static;
+        order: -1;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .fechas-image img {
+        max-width: 250px;
+      }
+
+      .timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr auto;
+        gap: 1rem;
+        align-items: start;
+      }
+
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        grid-template-columns: 1fr auto;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-date,
+      .timeline-item:nth-child(even) .timeline-date {
+        justify-self: start;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        justify-self: start;
+        grid-column: 1;
+      }
+
+      .timeline-mid {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        align-self: center;
+      }
+
+      .timeline-date {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .fechas-image {
+        display: none;
+      }
+
+      .timeline::before {
+        left: 20px;
+        transform: none;
+      }
+
+      .timeline-item {
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        align-items: start;
+        padding-left: 20px;
+      }
+
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        grid-template-columns: auto 1fr;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-date,
+      .timeline-item:nth-child(even) .timeline-date {
+        justify-self: start;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        justify-self: start;
+        grid-column: 2;
+      }
+
+      .timeline-mid {
+        grid-column: 1;
+        grid-row: 1 / 3;
+        justify-self: start;
+        width: 20px;
+        height: 20px;
+      }
+
+      .timeline-dot {
+        width: 12px;
+        height: 12px;
+      }
+
+      .timeline-date {
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .timeline-content {
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+      }
+    }
+
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+      width: 100%;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(135deg, #ff6b9c, #ff9fb5);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      grid-template-columns: 1fr auto 1fr;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-date {
+      justify-self: end;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      justify-self: start;
+    }
+
+    .timeline-item:nth-child(even) .timeline-date {
+      justify-self: start;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      justify-self: end;
+    }
+
+    .timeline-mid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-dot {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #ff6b9c, #ff9fb5);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(255, 182, 206, 0.3);
+      position: relative;
+      z-index: 3;
+    }
+
+    .timeline-date {
+      background: linear-gradient(135deg, #ff9fb5, #ff8fb1);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(255, 92, 138, 0.2);
+      max-width: 200px;
+      text-align: center;
+    }
+
+    .timeline-content {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(80, 60, 90, 0.1);
+      max-width: 300px;
+      color: #4d3a50;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* Secret modal */
+    .secret-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      overflow: hidden;
+    }
+
+    .secret-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .secret-note {
+      background: linear-gradient(135deg, #fff7f9, #fffaf2);
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(80, 60, 90, 0.15);
+      padding: 0;
+      position: relative;
+      max-width: min(92vw, 900px);
+      width: 100%;
+      max-height: 85vh;
+      height: auto;
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .secret-layout {
+      display: flex;
+      gap: 2rem;
+      flex: 1;
+      min-height: 0;
+      padding: 2rem;
+    }
+
+    .secret-text {
+      flex: 1;
+      min-width: 0;
+      min-height: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 8px;
+    }
+
+    .secret-illustration {
+      width: 40%;
+      max-width: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .secret-decoration-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      animation: float-decoration 6s ease-in-out infinite;
+    }
+
+    @media (max-width: 768px) {
+      .secret-illustration {
+        display: none;
+      }
+
+      .secret-layout {
+        padding: 1.5rem;
+      }
+
+      .secret-note {
+        height: min(90vh, 600px);
+      }
+    }
+
+    /* Final tab */
+    .final-content {
+      text-align: center;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+
+    .final-title {
+      font-size: 2.5rem;
+      color: #4d3a50;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, #ff6b9c, #ff9fb5);
+      background-clip: text;             
+      -webkit-background-clip: text;      
+      -webkit-text-fill-color: transparent;
+    }
+
+    .final-subtitle {
+      font-size: 1rem;
+      color: #6b556e;
+      margin-top: 15px;
+      opacity: 0.8;
+    }
+
+    .secret-btn {
+      background: linear-gradient(135deg, #ff9fb5, #ff8fb1);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 92, 138, 0.2);
+    }
+
+    .secret-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 92, 138, 0.3);
+    }
+
+    /* Photo modal */
+    .photo-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 999999;
+    }
+
+    .photo-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    /* Background blur layer */
+    .modal-bg-blur {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: blur(40px) brightness(0.7);
+      transform: scale(1.1);
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    /* Pink gradient overlay */
+    .modal-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at center,
+        rgba(255, 182, 193, 0.3) 0%,
+        rgba(255, 192, 203, 0.2) 30%,
+        rgba(255, 228, 225, 0.1) 60%,
+        transparent 100%
+      );
+      z-index: 2;
+    }
+
+    /* Floating hearts */
+    .modal-hearts {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0.15;
+      animation: floatHeart 8s ease-in-out infinite;
+    }
+
+    .floating-heart:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-heart:nth-child(2) {
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    .floating-heart:nth-child(3) {
+      bottom: 25%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    .floating-heart:nth-child(4) {
+      top: 15%;
+      right: 25%;
+      animation-delay: 6s;
+    }
+
+    .floating-heart:nth-child(5) {
+      bottom: 15%;
+      right: 10%;
+      animation-delay: 3s;
+    }
+
+    @keyframes floatHeart {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.15;
+      }
+      25% {
+        transform: translateY(-10px) rotate(5deg);
+        opacity: 0.2;
+      }
+      50% {
+        transform: translateY(-5px) rotate(-3deg);
+        opacity: 0.15;
+      }
+      75% {
+        transform: translateY(-15px) rotate(3deg);
+        opacity: 0.1;
+      }
+    }
+
+    .modal-content {
+      position: relative;
+      width: min(92vw, 1100px);
+      height: min(86vh, 780px);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      z-index: 10;
+      display: grid;
+      grid-template-rows: 1fr auto auto;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .photo-modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    /* Book viewer */
+    .book-viewer {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      aspect-ratio: 16/9;
+      max-height: 62vh;
+      perspective: 1200px;
+    }
+
+    @media (max-width: 768px) {
+      .book-viewer {
+        min-height: 280px;
+        aspect-ratio: 4/3;
+      }
+    }
+
+    .book-pages {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-style: preserve-3d;
+    }
+
+    .book-page {
+      position: absolute;
+      width: 49%;
+      height: 100%;
+      background: linear-gradient(135deg, #fefefe 0%, #f8f8f8 50%, #f0f0f0 100%);
+      border-radius: 8px;
+      box-shadow: 
+        inset 0 0 30px rgba(0,0,0,0.1),
+        0 4px 20px rgba(0,0,0,0.2);
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease-in-out;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+    }
+
+    .book-page::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 2px,
+          rgba(0,0,0,0.01) 2px,
+          rgba(0,0,0,0.01) 4px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0,0,0,0.01) 2px,
+          rgba(0,0,0,0.01) 4px
+        );
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    .page-left {
+      left: 0;
+      transform-origin: right center;
+    }
+
+    .page-right {
+      right: 0;
+      transform-origin: left center;
+    }
+
+    .book-spine {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to right, #ddd, #ccc, #ddd);
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 6px;
+      padding: 0.8rem;
+      box-shadow: 
+        0 2px 10px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+      transform: rotate(-1deg);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-frame:hover {
+      transform: rotate(0deg);
+    }
+
+    .page-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    /* Page flip animations */
+    .page-left.flipping-next {
+      transform: rotateY(-180deg);
+    }
+
+    .page-right.flipping-next {
+      transform: rotateY(0deg);
+    }
+
+    .page-left.flipping-prev {
+      transform: rotateY(0deg);
+    }
+
+    .page-right.flipping-prev {
+      transform: rotateY(180deg);
+    }
+
+    /* Caption and hint */
+    .modal-caption {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      color: #4d3a50;
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.6;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .modal-hint {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .photo-modal.active .modal-hint {
+      opacity: 1;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+
+    .modal-close:hover {
+      background: white;
+      transform: scale(1.1);
+    }
+
+    .modal-image {
+      width: 100%;
+      height: auto;
+      max-height: 70vh;
+      object-fit: contain;
+    }
+
+    .modal-caption {
+      padding: 1.5rem;
+      text-align: center;
+      color: #4d3a50;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .modal-hint {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .photo-modal.active .modal-hint {
+      opacity: 1;
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, #ff9fb5, #ff8fb1);
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(255, 143, 177, 0.4);
+    }
+
+    .modal-nav:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 12px 35px rgba(255, 143, 177, 0.6);
+    }
+
+    .modal-nav:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: translateY(-50%);
+    }
+
+    .modal-prev {
+      left: 1rem;
+    }
+
+    .modal-next {
+      right: 1rem;
+    }
+
+    .modal-nav svg {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .modal-nav:hover svg {
+      transform: scale(1.1);
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .book-container {
+        padding: 1rem;
+      }
+
+      .book-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .book-title {
+        font-size: 1.5rem;
+      }
+
+      .tab-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .tab-btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .polaroid-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        flex-direction: column !important;
+        align-items: flex-start;
+        padding-left: 50px;
+      }
+
+      .timeline-date {
+        margin: 0 0 1rem 0;
+      }
+
+      .timeline-item::before {
+        left: 20px;
+      }
+
+      .final-title {
+        font-size: 2rem;
+      }
+
+      .final-message {
+        font-size: 1rem;
+      }
+    }
+
+    #success-screen {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #d8c9ea, #f4d8e6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s ease;
+      z-index: 999999;
+    }
+
+    #success-screen.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .success-card {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 50px 70px;
+      border-radius: 30px;
+      backdrop-filter: blur(16px);
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(80, 60, 90, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .success-title {
+      font-size: 2.5rem;
+      color: #4d3a50;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ff6b9c, #ff9fb5);
+      background-clip: text;             
+      -webkit-background-clip: text;      
+      -webkit-text-fill-color: transparent;
+    }
+
+    .success-message {
+      font-size: 1.2rem;
+      color: #6b556e;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .heart-animation {
+      font-size: 4rem;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      margin: 20px 0;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.15); }
+    }
+
+    @media (max-width: 768px) {
+      .intro-card, .main-card, .success-card {
+        padding: 30px 40px;
+      }
+      
+      .question-title, .success-title {
+        font-size: 1.8rem;
+      }
+      
+      .buttons-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .answer-btn {
+        width: 200px;
+      }
+      
+      .mamegoma-left, .mamegoma-right {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="heart-particles"></div>
+  <div class="bubble-bg">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Mamegoma flotando -->
+  <img class="mamegoma-left" src="mamegoma_intro.png" alt="Mamegoma flotando">
+  <img class="mamegoma-right" src="mamegoma_intro.png" alt="Mamegoma flotando">
+
+  <!-- Primera pantalla -->
+  <div id="intro-screen">
+    <div class="intro-card">
+      <img class="intro-mymelody" src="mymelody_intro.png" alt="My Melody">
+      
+      <h1 class="intro-title">Para mi amor de San Valentín 💕</h1>
+      
+      <p class="intro-sub">
+        Tengo algo importante para preguntarte...  
+        Tocá para leerlo.
+      </p>
+      
+      <button id="read-btn" class="intro-open-btn">
+        Leer 💌
+      </button>
+    </div>
+  </div>
+
+  <!-- Segunda pantalla -->
+  <div id="main-screen">
+    <div class="main-card">
+      <!-- Decoración de corazones -->
+      <div class="hearts-decoration">💕</div>
+      <div class="hearts-decoration">💖</div>
+      
+      <!-- Decorative Sanrio characters -->
+      <img src="assets/pochacco_sticker.png" class="sanrio-decoration pochacco-sticker" alt="Pochacco">
+      <img src="assets/kurin_sticker.png" class="sanrio-decoration kurin-sticker" alt="Kurin">
+      
+      <!-- My Melody sticker near button -->
+      <img src="assets/mymelody_main.png" class="mymelody-sticker" alt="My Melody">
+      
+      <h2 class="question-title">¿Aceptas ser mi 14 de febrero?</h2>
+      <p class="question-subtitle">Hay solo una opcion, pequitas 💞</p>
+      
+      <div class="buttons-container">
+        <div class="funny-message" id="funny-message"></div>
+        <button id="btn-yes" class="answer-btn"><span>Sí 💖</span></button>
+      </div>
+      <div class="no-option-text">
+        <span class="no-text">No hay no, lo vas a pasar conmigo si o si :3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pantalla de libro/álbum -->
+  <div id="book-screen">
+    <div class="book-container">
+      <!-- Header -->
+      <header class="book-header">
+        <h1 class="book-title">Nuestro álbum 💞</h1>
+        <button class="back-btn" id="back-to-main">← Volver</button>
+      </header>
+      
+      <!-- Tab navigation -->
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="fotos">Fotos</button>
+        <button class="tab-btn" data-tab="cartitas">Cartitas</button>
+        <button class="tab-btn" data-tab="fechas">Fechas</button>
+        <button class="tab-btn" data-tab="final">Final</button>
+      </nav>
+      
+      <!-- Tab content -->
+      <main class="tab-content">
+        <!-- Fotos tab -->
+        <div class="tab-panel active" id="fotos-panel">
+          <div class="fotos-container">
+            <div class="polaroid-grid">
+              <div class="polaroid" data-photo="Nosotros siendo nosotros">
+                <img src="./assets/moments/photo1.jpg" alt="Foto 1" onerror="this.style.display='none'; this.parentElement.classList.add('image-error');">
+                <div class="polaroid-caption">Nosotros siendo nosotros</div>
+              </div>
+              <div class="polaroid" data-photo="Te amo, Simón">
+                <img src="./assets/moments/photo2.jpg" alt="Foto 2" onerror="this.style.display='none'; this.parentElement.classList.add('image-error');">
+                <div class="polaroid-caption">Te amo, Simón</div>
+              </div>
+              <div class="polaroid" data-photo="Sin plan, pero juntos">
+                <img src="./assets/moments/photo3.jpg" alt="Foto 3" onerror="this.style.display='none'; this.parentElement.classList.add('image-error');">
+                <div class="polaroid-caption">Sin plan, pero juntos</div>
+              </div>
+              <div class="polaroid" data-photo="Una noche cualquiera">
+                <img src="./assets/moments/photo4.jpg" alt="Foto 4" onerror="this.style.display='none'; this.parentElement.classList.add('image-error');">
+                <div class="polaroid-caption">Una noche cualquiera</div>
+              </div>
+              <div class="polaroid" data-photo="Cita improvisada">
+                <img src="./assets/moments/photo5.jpg" alt="Foto 5" onerror="this.style.display='none'; this.parentElement.classList.add('image-error');">
+                <div class="polaroid-caption">Cita improvisada</div>
+              </div>
+              <div class="polaroid" data-photo="Siempre nosotros">
+                <img src="./assets/moments/photo6.jpg" alt="Foto 6" onerror="this.style.display='none'; this.parentElement.classList.add('image-error');">
+                <div class="polaroid-caption">Siempre nosotros</div>
+              </div>
+            </div>
+            <div class="fotos-decoration">
+              <img src="assets/public/monchicustom.png" alt="Monchi decorativo" class="fotos-decoration-img">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Cartitas tab -->
+        <div class="tab-panel" id="cartitas-panel">
+          <div class="cartitas-container">
+            <div class="letters-container">
+              <div class="letter-card" data-letter-index="0">
+                <div class="letter-header">
+                  <h3>Cartita #1</h3>
+                  <span class="letter-date">14/02/2024</span>
+                </div>
+                <div class="letter-preview">
+                  Querida Ivita, hoy, más que nunca, quiero recordarte lo especial que sos para mí, lo mucho que te amo, te valoro y te respeto.
+                </div>
+                <div class="letter-full-text" style="display: none;">
+                  Querida Ivita,
+
+hoy, más que nunca, quiero recordarte lo especial que sos para mí, lo mucho que te amo, te valoro y te respeto.
+
+Sos esa mezcla rara y perfecta entre calma y tormenta. Sos tranquila, pero cuando algo te molesta, se nota, y a mí me encanta hasta eso, porque demuestra lo intensa y real que sos. No sos de medias tintas, y eso te hace única.
+
+Me encanta cómo sentís todo tan profundo. Cómo te emocionás por cosas simples. Cómo a veces te enojás y a los cinco minutos ya estás sensible y necesitás un abrazo. Y yo estoy ahí, ¿sabés? Siempre voy a estar ahí.
+
+A veces capaz no dimensionás lo importante que sos en mi vida. Pero lo sos. Muchísimo. Sos mi lugar seguro, mi paz cuando todo está desordenado, mi risa favorita y mi pensamiento constante.
+
+Gracias por ser como sos. Por tu carácter, por tu dulzura escondida detrás de esa carita "de poto" como decis vos, por tu forma de querer que es tan tuya. Gracias por elegirme, incluso en los días en que no soy mi mejor versión.
+
+Te amo de una manera que no es tranquila, es firme. No es pasajera, es decidida. No es capricho, es elección.
+
+Y si algún día dudás, si te sentís insegura o enojona o sensible de más, acordate de esto: yo te elijo. Con todo lo que sos. Sin querer cambiarte nada.
+
+Siempre vos. Siempre nosotros. 💕
+                </div>
+                <div class="letter-read-hint">
+                  <span>Tocá para leer</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="letter-card" data-letter-index="1">
+                <div class="letter-header">
+                  <h3>Cartita #2</h3>
+                  <span class="letter-date">15/02/2024</span>
+                </div>
+                <div class="letter-preview">
+                  Mi amor, quiero que esto te quede clarísimo, grabado en la cabeza y en el corazón...
+                </div>
+                <div class="letter-full-text" style="display: none;">
+Mi amor,
+
+Quiero que esto te quede clarísimo, grabado en la cabeza y en el corazón: vos no me debés absolutamente nada. Nada de nada. No me debés explicaciones eternas, no me debés perfección, no me debés estar siempre bien, ni fuerte, ni tranquila. No me debés nada.
+
+Yo estoy con vos porque quiero. Porque te elijo. Porque me nace. Porque sos vos.
+
+No quiero que sientas que tenés que compensar algo, ni demostrarme nada, ni esforzarte por estar a la altura de nada. Para mí ya sos suficiente. Sos más que suficiente. Con tus días buenos, con tus días enojones, con tus días sensibles donde todo te pesa un poco más.
+
+Te amo así, completa. Real. Sin filtros.
+
+Y si alguna vez te entra esa idea en la cabeza de que me debés algo, te la saco yo mismo. Lo único que quiero de vos es que seas vos. Que te sientas segura conmigo. Que descanses en mí cuando el mundo te agota.
+
+Conmigo no te va a faltar amor.
+No te va a faltar respeto.
+No te va a faltar cuidado.
+No te va a faltar contención.
+
+Yo no estoy para pasar el rato. Estoy para quedarme. Para bancarte. Para abrazarte cuando estés sensible y para hacerte reír cuando estés enojada. Para ser tu paz cuando todo está desordenado.
+
+Nunca te va a faltar nada conmigo, porque todo lo que tengo lo pongo acá, con vos.
+
+Te amo de una forma firme, decidida. Sin dudas.
+
+Siempre tuyo. 💗
+                </div>
+                <div class="letter-read-hint">
+                  <span>Tocá para leer</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="letter-card" data-letter-index="2">
+                <div class="letter-header">
+                  <h3>Cartita #3</h3>
+                  <span class="letter-date">16/02/2024</span>
+                </div>
+                <div class="letter-preview">
+                  Mi vida, importa cuándo leas esto, ni en qué momento estés...
+                </div>
+                <div class="letter-full-text" style="display: none;">
+Mi vida,
+
+No importa cuándo leas esto, ni en qué momento estés: mi corazón siempre te va a elegir a vos.
+
+No es algo que tenga que pensar. No es una decisión que me cueste. No es una duda que tenga que resolver. Es automático. Es natural. Es como respirar.
+
+Entre todas las personas del mundo, entre todas las posibilidades, entre todos los caminos… mi corazón va directo a vos. Siempre.
+
+Te elige cuando estás tranquila y me hablás bajito.
+Te elige cuando te enojás y fruncís esa carita que igual me encanta.
+Te elige cuando estás sensible y necesitás que te abrace sin decir nada.
+Te elige incluso cuando dudás de vos misma.
+
+Porque yo no dudo.
+
+Mi corazón te reconoce como su casa. Y cuando algo es casa, no se reemplaza, no se compara, no se negocia.
+
+Si algún día te sentís insegura, si alguna vez pensás que capaz no sos suficiente, acordate de esto: yo no te elijo por lo que hacés, te elijo por quién sos. Y eso no cambia.
+
+Mi corazón no es volátil. No es caprichoso. No es pasajero. Es firme. Y está con vos.
+
+Hoy, mañana y cada vez que tenga que volver a elegir…
+mi corazón va a decir tu nombre.
+
+Siempre vos. 💗
+                </div>
+                <div class="letter-read-hint">
+                  <span>Tocá para leer</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="cartitas-decoration">
+              <img src="assets/public/pochaccocustom.png" alt="Pochacco decorativo" class="cartitas-decoration-img">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Fechas tab -->
+        <div class="tab-panel" id="fechas-panel">
+          <div class="fechas-layout">
+            <div class="fechas-content">
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-date">07/02/2026</div>
+                  <div class="timeline-mid">
+                    <span class="timeline-dot"></span>
+                  </div>
+                  <div class="timeline-content">Oficializamos nuestra relacion 💕</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-date">08/02/2026</div>
+                  <div class="timeline-mid">
+                    <span class="timeline-dot"></span>
+                  </div>
+                  <div class="timeline-content">Risas, cariño y amor 🌟</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-date">09/02/2026</div>
+                  <div class="timeline-mid">
+                    <span class="timeline-dot"></span>
+                  </div>
+                  <div class="timeline-content">Hablamos con nuestras mamis 🌈</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-date">12/02/2026</div>
+                  <div class="timeline-mid">
+                    <span class="timeline-dot"></span>
+                  </div>
+                  <div class="timeline-content">Noche, una cadena y mucho amor ❤️</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-date">14/02/2026</div>
+                  <div class="timeline-mid">
+                    <span class="timeline-dot"></span>
+                  </div>
+                  <div class="timeline-content">Nuestro primer San Valentin 💞</div>
+                </div>
+              </div>
+            </div>
+            <div class="fechas-image">
+              <img src="assets/public/kuririncustom.png" alt="Kuririn fechas">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Final tab -->
+        <div class="tab-panel" id="final-panel">
+          <div class="final-content">
+            <h2 class="final-title">Feliz San Valentín, mi amor 💞</h2>
+            <button class="secret-btn" id="reveal-secret">Mostrar mensaje secreto 🤫</button>
+            <p class="final-subtitle">Prometo que vale la pena 💗</p>
+          </div>
+        </div>
+      </main>
+    </div>
+    
+    <!-- Letter modal -->
+    <div class="letter-modal" id="letter-modal">
+      <div class="letter-overlay"></div>
+      <div class="letter-note">
+        <div class="letter-tape"></div>
+        <div class="letter-heart-watermark">💕</div>
+        
+        <div class="letter-note-header">
+          <h3 class="letter-note-title">Cartita #1</h3>
+          <span class="letter-note-date">14/02/2024</span>
+          <button class="letter-note-close" id="letter-note-close">×</button>
+        </div>
+        
+        <div class="letter-note-body">
+          <div class="letter-note-content" id="letter-note-content">
+            <!-- Letter content will be injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo modal -->
+    <div class="photo-modal" id="photo-modal">
+      <!-- Background blur layer -->
+      <div class="modal-bg-blur" id="modal-bg-blur"></div>
+      
+      <!-- Pink gradient overlay -->
+      <div class="modal-gradient-overlay"></div>
+      
+      <!-- Floating hearts -->
+      <div class="modal-hearts">
+        <div class="floating-heart">💕</div>
+        <div class="floating-heart">💖</div>
+        <div class="floating-heart">💗</div>
+        <div class="floating-heart">💝</div>
+        <div class="floating-heart">💕</div>
+      </div>
+      
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close">×</button>
+        
+        <!-- Navigation arrows -->
+        <button class="modal-nav modal-prev" id="modal-prev">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="modal-nav modal-next" id="modal-next">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        
+        <div class="book-viewer">
+          <div class="book-pages">
+            <div class="book-page page-left" id="page-left">
+              <div class="photo-frame">
+                <img class="page-photo" id="page-photo" src="" alt="">
+              </div>
+            </div>
+            <div class="book-spine"></div>
+            <div class="book-page page-right" id="page-right">
+              <div class="photo-frame">
+                <img class="page-photo" id="page-photo-next" src="" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-caption" id="modal-caption"></div>
+        <div class="modal-hint">Usá las flechas ← → o tocá los botones</div>
+      </div>
+    </div>
+
+    <!-- Preloaded images container (hidden) -->
+    <div id="preloaded-images" style="display: none;"></div>
+  </div>
+
+  <!-- Secret message modal -->
+  <div class="secret-modal" id="secret-modal">
+    <div class="letter-overlay"></div>
+    <div class="secret-note">
+      <div class="letter-tape"></div>
+      <div class="letter-heart-watermark">💕</div>
+      <div class="letter-note-header">
+        <h3 class="letter-note-title">Mensaje secreto</h3>
+        <span class="letter-note-date">14/02/2026</span>
+        <button class="letter-note-close" id="secret-modal-close">×</button>
+      </div>
+      <div class="secret-layout">
+        <div class="secret-text">
+          <div class="letter-note-body">
+            <div class="letter-note-content">
+              <p>💌 Si llegaste hasta acá… es porque de verdad sos vos.</p>
+              <p>Ivita, hay algo que quiero que sepas y que nunca se te olvide: yo no estoy acá por costumbre, ni por comodidad, ni por miedo a estar solo. Estoy acá porque te elijo. Todos los días. Incluso en los días en que estamos cansados, en los que algo nos molesta, en los que el mundo pesa un poco más.</p>
+              <p>Te elijo cuando estás tranquila y cuando estás enojona. Te elijo cuando sos fuerte y cuando estás sensible. Te elijo cuando reís, cuando dudás y cuando necesitás que alguien te abrace sin decir nada.</p>
+              <p>No sos perfecta, pero sos perfecta para mí. Y no porque no tengas defectos, sino porque incluso esos detalles que a veces te hacen insegura, para mí son parte de lo que te hace única. Yo no quiero una versión editada tuya. Te quiero a vos, completa.</p>
+              <p>Si algún día te sentís insuficiente, acordate de esto: para mí sos hogar. Sos refugio. Sos mi paz cuando todo está revuelto. Sos la persona con la que quiero hablar cuando me pasa algo bueno y también cuando algo me duele.</p>
+              <p>Y si alguna vez dudás de cuánto te amo, volvé a este mensaje y leelo despacio.</p>
+              <p>No es algo pasajero. No es capricho. No es intensidad del momento.</p>
+              <p>Es decisión. Es compromiso. Es amor del que se queda.</p>
+              <p>Y mientras yo esté en tu vida, no te va a faltar cariño, apoyo ni un lugar seguro donde caer.</p>
+              <p>Siempre voy a estar de tu lado. Siempre voy a elegirte. Siempre vos. 💗</p>
+            </div>
+          </div>
+        </div>
+        <div class="secret-illustration">
+          <img src="assets/public/ositocustom.png" alt="Osito decorativo" class="secret-decoration-img">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pantalla de éxito -->
+  <div id="success-screen">
+    <div class="success-card">
+      <h2 class="success-title">¡Sí! 💕</h2>
+      
+      <div class="heart-animation">💖</div>
+      
+      <p class="success-message">
+        Sabía que dirías que sí...<br>
+        Este 14 de febrero va a ser especial<br>
+        porque lo voy a pasar contigo.<br><br>
+        Te amo muchísimo, mi amor 💕
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const introScreen = document.getElementById('intro-screen');
+    const mainScreen = document.getElementById('main-screen');
+    const successScreen = document.getElementById('success-screen');
+    const readBtn = document.getElementById('read-btn');
+    const btnYes = document.getElementById('btn-yes');
+
+    // Audio
+    const audio = new Audio('track.mp3');
+    audio.loop = true;
+
+    // Primer click - iniciar música y mostrar pregunta
+    readBtn.addEventListener('click', () => {
+      // Iniciar música
+      audio.play().catch(e => console.log('Error reproduciendo audio:', e));
+
+      // Transición suave a la segunda pantalla
+      introScreen.style.opacity = '0';
+      
+      setTimeout(() => {
+        introScreen.style.display = 'none';
+        mainScreen.classList.add('active');
+      }, 600);
+    });
+
+    // Función para crear corazones flotantes
+    function createFloatingHeart(button) {
+      // Removed - no more floating hearts
+    }
+
+    // Botón Sí - mostrar pantalla de éxito
+    // Book screen functionality
+    const bookScreen = document.getElementById('book-screen');
+    const backToMainBtn = document.getElementById('back-to-main');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    const modalClose = document.getElementById('modal-close');
+    const modalCaption = document.getElementById('modal-caption');
+    const polaroids = document.querySelectorAll('.polaroid');
+    const letterCards = document.querySelectorAll('.letter-card');
+    const secretBtn = document.getElementById('reveal-secret');
+    const secretMessage = document.getElementById('secret-message');
+
+    // Tab switching
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetTab = btn.dataset.tab;
+        
+        // Remove active class from all tabs and panels
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding panel
+        btn.classList.add('active');
+        document.getElementById(`${targetTab}-panel`).classList.add('active');
+      });
+    });
+
+    // Photo modal
+    const photoModal = document.getElementById('photo-modal');
+    const modalPrev = document.getElementById('modal-prev');
+    const modalNext = document.getElementById('modal-next');
+    const pageLeft = document.getElementById('page-left');
+    const pageRight = document.getElementById('page-right');
+    const pagePhoto = document.getElementById('page-photo');
+    const pagePhotoNext = document.getElementById('page-photo-next');
+    
+    let currentPhotoIndex = 0;
+    let isAnimating = false;
+    let preloadedImages = [];
+    const photoData = [];
+
+    // Collect photo data and preload images
+    function initializePhotoData() {
+        // Clean arrays to avoid duplicates
+        photoData.length = 0;
+        preloadedImages.length = 0;
+        
+        const polaroids = document.querySelectorAll('.polaroid');
+        
+        if (polaroids.length === 0) {
+            setTimeout(initializePhotoData, 100);
+            return;
+        }
+        
+        polaroids.forEach((polaroid, index) => {
+            const img = polaroid.querySelector('img');
+            const caption = polaroid.querySelector('.polaroid-caption');
+            
+            photoData.push({
+                src: img.src,
+                alt: img.alt,
+                caption: caption.textContent
+            });
+        });
+        
+        // Preload all images
+        const preloadContainer = document.getElementById('preloaded-images');
+        preloadContainer.innerHTML = ''; // Clean previous preloads
+        
+        photoData.forEach((photo, index) => {
+            const img = new Image();
+            img.src = photo.src;
+            preloadedImages.push(img);
+            
+            // Add to hidden container for actual preloading
+            const hiddenImg = document.createElement('img');
+            hiddenImg.src = photo.src;
+            hiddenImg.style.display = 'none';
+            preloadContainer.appendChild(hiddenImg);
+        });
+        
+        // Bind click listeners after data is collected
+        bindPhotoClickListeners();
+    }
+
+    // Bind click listeners to photos
+    function bindPhotoClickListeners() {
+        const polaroids = document.querySelectorAll('.polaroid');
+        
+        polaroids.forEach((polaroid, index) => {
+            // Remove existing listeners to prevent duplicates
+            if (polaroid._clickHandler) {
+                polaroid.removeEventListener('click', polaroid._clickHandler);
+            }
+            
+            // Create and store handler
+            polaroid._clickHandler = (e) => {
+                e.preventDefault();
+                openModal(index);
+            };
+            
+            polaroid.addEventListener('click', polaroid._clickHandler);
+        });
+    }
+
+    // Initialize book viewer
+    function initializeBookViewer(photoIndex) {
+        currentPhotoIndex = photoIndex;
+        
+        // Set current photo
+        pagePhoto.src = photoData[currentPhotoIndex].src;
+        pagePhoto.alt = photoData[currentPhotoIndex].alt;
+        
+        // Set next photo if available
+        if (currentPhotoIndex < photoData.length - 1) {
+            pagePhotoNext.src = photoData[currentPhotoIndex + 1].src;
+            pagePhotoNext.alt = photoData[currentPhotoIndex + 1].alt;
+        } else {
+            pagePhotoNext.src = photoData[0].src;
+            pagePhotoNext.alt = photoData[0].alt;
+        }
+        
+        // Update background blur with current image
+        const modalBgBlur = document.getElementById('modal-bg-blur');
+        modalBgBlur.style.backgroundImage = `url(${photoData[currentPhotoIndex].src})`;
+        
+        // Reset pages
+        pageLeft.className = 'book-page page-left';
+        pageRight.className = 'book-page page-right';
+        
+        // Update caption
+        modalCaption.textContent = photoData[currentPhotoIndex].caption;
+        
+        // Update navigation button states
+        updateNavigationStates();
+    }
+
+    // Update navigation button states
+    function updateNavigationStates() {
+        modalPrev.disabled = currentPhotoIndex === 0;
+        modalNext.disabled = currentPhotoIndex === photoData.length - 1;
+        
+        modalPrev.style.opacity = currentPhotoIndex === 0 ? '0.3' : '1';
+        modalNext.style.opacity = currentPhotoIndex === photoData.length - 1 ? '0.3' : '1';
+    }
+
+    // Navigate to next photo with page flip
+    function showNextPhoto() {
+        if (isAnimating || currentPhotoIndex >= photoData.length - 1) return;
+        
+        isAnimating = true;
+        
+        const nextIndex = currentPhotoIndex + 1;
+        
+        // Update background blur with next image
+        const modalBgBlur = document.getElementById('modal-bg-blur');
+        modalBgBlur.style.backgroundImage = `url(${photoData[nextIndex].src})`;
+        
+        // Set next photo in right page
+        pagePhotoNext.src = photoData[nextIndex].src;
+        pagePhotoNext.alt = photoData[nextIndex].alt;
+        
+        // Start page flip animation
+        pageLeft.classList.add('flipping-next');
+        pageRight.classList.add('flipping-next');
+        
+        // Handle animation end
+        setTimeout(() => {
+            // Update current index
+            currentPhotoIndex = nextIndex;
+            
+            // Swap photos
+            pagePhoto.src = pagePhotoNext.src;
+            pagePhoto.alt = pagePhotoNext.alt;
+            
+            // Reset classes
+            pageLeft.className = 'book-page page-left';
+            pageRight.className = 'book-page page-right';
+            
+            // Preload next image if available
+            if (currentPhotoIndex < photoData.length - 1) {
+                pagePhotoNext.src = photoData[currentPhotoIndex + 1].src;
+                pagePhotoNext.alt = photoData[currentPhotoIndex + 1].alt;
+            } else {
+                pagePhotoNext.src = photoData[0].src;
+                pagePhotoNext.alt = photoData[0].alt;
+            }
+            
+            // Update caption and navigation
+            modalCaption.textContent = photoData[currentPhotoIndex].caption;
+            updateNavigationStates();
+            
+            isAnimating = false;
+        }, 500);
+    }
+
+    // Navigate to previous photo with page flip
+    function showPrevPhoto() {
+        if (isAnimating || currentPhotoIndex <= 0) return;
+        
+        isAnimating = true;
+        
+        const prevIndex = currentPhotoIndex - 1;
+        
+        // Update background blur with prev image
+        const modalBgBlur = document.getElementById('modal-bg-blur');
+        modalBgBlur.style.backgroundImage = `url(${photoData[prevIndex].src})`;
+        
+        // Set prev photo in left page
+        pagePhoto.src = photoData[prevIndex].src;
+        pagePhoto.alt = photoData[prevIndex].alt;
+        
+        // Start page flip animation
+        pageLeft.classList.add('flipping-prev');
+        pageRight.classList.add('flipping-prev');
+        
+        // Handle animation end
+        setTimeout(() => {
+            // Update current index
+            currentPhotoIndex = prevIndex;
+            
+            // Update next photo
+            if (currentPhotoIndex < photoData.length - 1) {
+                pagePhotoNext.src = photoData[currentPhotoIndex + 1].src;
+                pagePhotoNext.alt = photoData[currentPhotoIndex + 1].alt;
+            } else {
+                pagePhotoNext.src = photoData[0].src;
+                pagePhotoNext.alt = photoData[0].alt;
+            }
+            
+            // Reset classes
+            pageLeft.className = 'book-page page-left';
+            pageRight.className = 'book-page page-right';
+            
+            // Update caption and navigation
+            modalCaption.textContent = photoData[currentPhotoIndex].caption;
+            updateNavigationStates();
+            
+            isAnimating = false;
+        }, 500);
+    }
+
+    // Open modal with specific photo
+    function openModal(photoIndex) {
+        if (!photoData || photoData.length === 0) {
+            initializePhotoData();
+            return;
+        }
+        
+        if (photoIndex < 0 || photoIndex >= photoData.length) {
+            return;
+        }
+        
+        initializeBookViewer(photoIndex);
+        
+        // Ensure modal is visible
+        photoModal.style.display = 'flex';
+        photoModal.offsetHeight; // Force reflow
+        
+        photoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal
+    function closeModal() {
+        photoModal.classList.remove('active');
+        document.body.style.overflow = '';
+        isAnimating = false;
+        
+        // Hide modal after transition
+        setTimeout(() => {
+            photoModal.style.display = '';
+        }, 400);
+    }
+
+    // Event listeners
+    modalClose.addEventListener('click', closeModal);
+    modalPrev.addEventListener('click', showPrevPhoto);
+    modalNext.addEventListener('click', showNextPhoto);
+
+    photoModal.addEventListener('click', (e) => {
+        if (e.target === photoModal) {
+            closeModal();
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!photoModal.classList.contains('active')) return;
+        
+        switch(e.key) {
+            case 'Escape':
+                closeModal();
+                break;
+            case 'ArrowLeft':
+                showPrevPhoto();
+                break;
+            case 'ArrowRight':
+                showNextPhoto();
+                break;
+        }
+    });
+
+    // Initialize photo data when book screen opens
+    const bookObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                if (bookScreen.classList.contains('active')) {
+                    if (photoData.length === 0) {
+                        initializePhotoData();
+                    } else {
+                        bindPhotoClickListeners();
+                    }
+                }
+            }
+        });
+    });
+    
+    bookObserver.observe(bookScreen, { attributes: true });
+    
+    // Also try to initialize immediately if book screen is already active
+    if (bookScreen.classList.contains('active')) {
+        initializePhotoData();
+    }
+
+    // Letter modal functionality
+    const letterModal = document.getElementById('letter-modal');
+    const letterNoteClose = document.getElementById('letter-note-close');
+    const letterNoteContent = document.getElementById('letter-note-content');
+    const letterNoteTitle = document.querySelector('.letter-note-title');
+    const letterNoteDate = document.querySelector('.letter-note-date');
+
+    // Open letter modal
+    function openLetterModal(index) {
+        const letterCard = document.querySelector(`[data-letter-index="${index}"]`);
+        const title = letterCard.querySelector('h3').textContent;
+        const date = letterCard.querySelector('.letter-date').textContent;
+        const fullText = letterCard.querySelector('.letter-full-text').textContent.trim();
+        
+        // Update modal content
+        letterNoteTitle.textContent = title;
+        letterNoteDate.textContent = date;
+        letterNoteContent.textContent = fullText;
+        
+        // Show modal
+        letterModal.style.display = 'flex';
+        letterModal.offsetHeight; // Force reflow
+        letterModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close letter modal
+    function closeLetterModal() {
+        letterModal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Hide modal after transition
+        setTimeout(() => {
+            letterModal.style.display = 'none';
+        }, 300);
+    }
+
+    // Letter cards click handlers
+    letterCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const index = parseInt(card.dataset.letterIndex);
+            openLetterModal(index);
+        });
+    });
+
+    // Close modal events
+    letterNoteClose.addEventListener('click', closeLetterModal);
+    
+    letterModal.addEventListener('click', (e) => {
+        if (e.target === letterModal || e.target.classList.contains('letter-overlay')) {
+            closeLetterModal();
+        }
+    });
+
+    // Secret modal functionality
+    const secretModal = document.getElementById('secret-modal');
+    const secretModalClose = document.getElementById('secret-modal-close');
+
+    // Open secret modal
+    function openSecretModal() {
+        secretModal.style.display = 'flex';
+        secretModal.offsetHeight; // Force reflow
+        secretModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close secret modal
+    function closeSecretModal() {
+        secretModal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Hide modal after transition
+        setTimeout(() => {
+            secretModal.style.display = 'none';
+        }, 300);
+    }
+
+    // Secret button click handler
+    secretBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openSecretModal();
+    });
+
+    // Close secret modal events
+    secretModalClose.addEventListener('click', closeSecretModal);
+    
+    secretModal.addEventListener('click', (e) => {
+        if (e.target === secretModal || e.target.classList.contains('letter-overlay')) {
+            closeSecretModal();
+        }
+    });
+
+    // ESC key to close modals
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (letterModal.classList.contains('active')) {
+                closeLetterModal();
+            }
+            if (secretModal.classList.contains('active')) {
+                closeSecretModal();
+            }
+        }
+    });
+
+    // Letter cards accordion functionality (removed - replaced with modal)
+
+    // Back to main screen
+    backToMainBtn.addEventListener('click', () => {
+        bookScreen.classList.remove('active');
+        mainScreen.classList.add('active');
+    });
+
+    // ESC key closes modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && photoModal.classList.contains('active')) {
+            photoModal.classList.remove('active');
+        }
+    });
+
+    // Modify YES button to show book screen instead of success screen
+    btnYes.addEventListener('click', () => {
+        mainScreen.classList.remove('active');
+        bookScreen.classList.add('active');
+    });  
+  </script>
+</body>
+</html>
