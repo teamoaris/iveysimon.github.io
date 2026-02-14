@@ -2225,11 +2225,9 @@
     <div class="bubble"></div>
   </div>
 
-  <!-- Mamegoma flotando -->
   <img class="mamegoma-left" src="mamegoma_intro.png" alt="Mamegoma flotando">
   <img class="mamegoma-right" src="mamegoma_intro.png" alt="Mamegoma flotando">
 
-  <!-- Primera pantalla -->
   <div id="intro-screen">
     <div class="intro-card">
       <img class="intro-mymelody" src="mymelody_intro.png" alt="My Melody">
@@ -2247,18 +2245,14 @@
     </div>
   </div>
 
-  <!-- Segunda pantalla -->
   <div id="main-screen">
     <div class="main-card">
-      <!-- Decoración de corazones -->
       <div class="hearts-decoration">💕</div>
       <div class="hearts-decoration">💖</div>
       
-      <!-- Decorative Sanrio characters -->
       <img src="assets/pochacco_sticker.png" class="sanrio-decoration pochacco-sticker" alt="Pochacco">
       <img src="assets/kurin_sticker.png" class="sanrio-decoration kurin-sticker" alt="Kurin">
       
-      <!-- My Melody sticker near button -->
       <img src="assets/mymelody_main.png" class="mymelody-sticker" alt="My Melody">
       
       <h2 class="question-title">¿Aceptas ser mi 14 de febrero?</h2>
@@ -2274,16 +2268,13 @@
     </div>
   </div>
 
-  <!-- Pantalla de libro/álbum -->
   <div id="book-screen">
     <div class="book-container">
-      <!-- Header -->
       <header class="book-header">
         <h1 class="book-title">Nuestro álbum 💞</h1>
         <button class="back-btn" id="back-to-main">← Volver</button>
       </header>
       
-      <!-- Tab navigation -->
       <nav class="tab-nav">
         <button class="tab-btn active" data-tab="fotos">Fotos</button>
         <button class="tab-btn" data-tab="cartitas">Cartitas</button>
@@ -2291,9 +2282,7 @@
         <button class="tab-btn" data-tab="final">Final</button>
       </nav>
       
-      <!-- Tab content -->
       <main class="tab-content">
-        <!-- Fotos tab -->
         <div class="tab-panel active" id="fotos-panel">
           <div class="fotos-container">
             <div class="polaroid-grid">
@@ -2328,7 +2317,6 @@
           </div>
         </div>
         
-        <!-- Cartitas tab -->
         <div class="tab-panel" id="cartitas-panel">
           <div class="cartitas-container">
             <div class="letters-container">
@@ -2456,7 +2444,6 @@ Siempre vos. 💗
           </div>
         </div>
         
-        <!-- Fechas tab -->
         <div class="tab-panel" id="fechas-panel">
           <div class="fechas-layout">
             <div class="fechas-content">
@@ -2504,7 +2491,6 @@ Siempre vos. 💗
           </div>
         </div>
         
-        <!-- Final tab -->
         <div class="tab-panel" id="final-panel">
           <div class="final-content">
             <h2 class="final-title">Feliz San Valentín, mi amor 💞</h2>
@@ -2515,7 +2501,6 @@ Siempre vos. 💗
       </main>
     </div>
     
-    <!-- Letter modal -->
     <div class="letter-modal" id="letter-modal">
       <div class="letter-overlay"></div>
       <div class="letter-note">
@@ -2530,21 +2515,17 @@ Siempre vos. 💗
         
         <div class="letter-note-body">
           <div class="letter-note-content" id="letter-note-content">
-            <!-- Letter content will be injected here -->
+           
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Photo modal -->
     <div class="photo-modal" id="photo-modal">
-      <!-- Background blur layer -->
       <div class="modal-bg-blur" id="modal-bg-blur"></div>
       
-      <!-- Pink gradient overlay -->
       <div class="modal-gradient-overlay"></div>
       
-      <!-- Floating hearts -->
       <div class="modal-hearts">
         <div class="floating-heart">💕</div>
         <div class="floating-heart">💖</div>
@@ -2556,7 +2537,6 @@ Siempre vos. 💗
       <div class="modal-content">
         <button class="modal-close" id="modal-close">×</button>
         
-        <!-- Navigation arrows -->
         <button class="modal-nav modal-prev" id="modal-prev">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -2588,11 +2568,9 @@ Siempre vos. 💗
       </div>
     </div>
 
-    <!-- Preloaded images container (hidden) -->
     <div id="preloaded-images" style="display: none;"></div>
   </div>
 
-  <!-- Secret message modal -->
   <div class="secret-modal" id="secret-modal">
     <div class="letter-overlay"></div>
     <div class="secret-note">
@@ -2626,8 +2604,6 @@ Siempre vos. 💗
       </div>
     </div>
   </div>
-
-  <!-- Pantalla de éxito -->
   <div id="success-screen">
     <div class="success-card">
       <h2 class="success-title">¡Sí! 💕</h2>
@@ -2650,16 +2626,12 @@ Siempre vos. 💗
     const readBtn = document.getElementById('read-btn');
     const btnYes = document.getElementById('btn-yes');
 
-    // Audio
     const audio = new Audio('track.mp3');
     audio.loop = true;
 
-    // Primer click - iniciar música y mostrar pregunta
     readBtn.addEventListener('click', () => {
-      // Iniciar música
       audio.play().catch(e => console.log('Error reproduciendo audio:', e));
 
-      // Transición suave a la segunda pantalla
       introScreen.style.opacity = '0';
       
       setTimeout(() => {
@@ -2668,13 +2640,9 @@ Siempre vos. 💗
       }, 600);
     });
 
-    // Función para crear corazones flotantes
     function createFloatingHeart(button) {
-      // Removed - no more floating hearts
     }
 
-    // Botón Sí - mostrar pantalla de éxito
-    // Book screen functionality
     const bookScreen = document.getElementById('book-screen');
     const backToMainBtn = document.getElementById('back-to-main');
     const tabBtns = document.querySelectorAll('.tab-btn');
@@ -2686,22 +2654,18 @@ Siempre vos. 💗
     const secretBtn = document.getElementById('reveal-secret');
     const secretMessage = document.getElementById('secret-message');
 
-    // Tab switching
     tabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const targetTab = btn.dataset.tab;
         
-        // Remove active class from all tabs and panels
         tabBtns.forEach(b => b.classList.remove('active'));
         tabPanels.forEach(p => p.classList.remove('active'));
         
-        // Add active class to clicked tab and corresponding panel
         btn.classList.add('active');
         document.getElementById(`${targetTab}-panel`).classList.add('active');
       });
     });
 
-    // Photo modal
     const photoModal = document.getElementById('photo-modal');
     const modalPrev = document.getElementById('modal-prev');
     const modalNext = document.getElementById('modal-next');
@@ -2715,9 +2679,7 @@ Siempre vos. 💗
     let preloadedImages = [];
     const photoData = [];
 
-    // Collect photo data and preload images
     function initializePhotoData() {
-        // Clean arrays to avoid duplicates
         photoData.length = 0;
         preloadedImages.length = 0;
         
@@ -2739,37 +2701,31 @@ Siempre vos. 💗
             });
         });
         
-        // Preload all images
         const preloadContainer = document.getElementById('preloaded-images');
-        preloadContainer.innerHTML = ''; // Clean previous preloads
+        preloadContainer.innerHTML = ''; 
         
         photoData.forEach((photo, index) => {
             const img = new Image();
             img.src = photo.src;
             preloadedImages.push(img);
             
-            // Add to hidden container for actual preloading
             const hiddenImg = document.createElement('img');
             hiddenImg.src = photo.src;
             hiddenImg.style.display = 'none';
             preloadContainer.appendChild(hiddenImg);
         });
         
-        // Bind click listeners after data is collected
         bindPhotoClickListeners();
     }
 
-    // Bind click listeners to photos
     function bindPhotoClickListeners() {
         const polaroids = document.querySelectorAll('.polaroid');
         
         polaroids.forEach((polaroid, index) => {
-            // Remove existing listeners to prevent duplicates
             if (polaroid._clickHandler) {
                 polaroid.removeEventListener('click', polaroid._clickHandler);
             }
             
-            // Create and store handler
             polaroid._clickHandler = (e) => {
                 e.preventDefault();
                 openModal(index);
@@ -2779,15 +2735,12 @@ Siempre vos. 💗
         });
     }
 
-    // Initialize book viewer
     function initializeBookViewer(photoIndex) {
         currentPhotoIndex = photoIndex;
         
-        // Set current photo
         pagePhoto.src = photoData[currentPhotoIndex].src;
         pagePhoto.alt = photoData[currentPhotoIndex].alt;
         
-        // Set next photo if available
         if (currentPhotoIndex < photoData.length - 1) {
             pagePhotoNext.src = photoData[currentPhotoIndex + 1].src;
             pagePhotoNext.alt = photoData[currentPhotoIndex + 1].alt;
@@ -2796,22 +2749,17 @@ Siempre vos. 💗
             pagePhotoNext.alt = photoData[0].alt;
         }
         
-        // Update background blur with current image
         const modalBgBlur = document.getElementById('modal-bg-blur');
         modalBgBlur.style.backgroundImage = `url(${photoData[currentPhotoIndex].src})`;
         
-        // Reset pages
         pageLeft.className = 'book-page page-left';
         pageRight.className = 'book-page page-right';
         
-        // Update caption
         modalCaption.textContent = photoData[currentPhotoIndex].caption;
         
-        // Update navigation button states
         updateNavigationStates();
     }
 
-    // Update navigation button states
     function updateNavigationStates() {
         modalPrev.disabled = currentPhotoIndex === 0;
         modalNext.disabled = currentPhotoIndex === photoData.length - 1;
@@ -2820,7 +2768,6 @@ Siempre vos. 💗
         modalNext.style.opacity = currentPhotoIndex === photoData.length - 1 ? '0.3' : '1';
     }
 
-    // Navigate to next photo with page flip
     function showNextPhoto() {
         if (isAnimating || currentPhotoIndex >= photoData.length - 1) return;
         
@@ -2828,32 +2775,24 @@ Siempre vos. 💗
         
         const nextIndex = currentPhotoIndex + 1;
         
-        // Update background blur with next image
         const modalBgBlur = document.getElementById('modal-bg-blur');
         modalBgBlur.style.backgroundImage = `url(${photoData[nextIndex].src})`;
         
-        // Set next photo in right page
         pagePhotoNext.src = photoData[nextIndex].src;
         pagePhotoNext.alt = photoData[nextIndex].alt;
         
-        // Start page flip animation
         pageLeft.classList.add('flipping-next');
         pageRight.classList.add('flipping-next');
         
-        // Handle animation end
         setTimeout(() => {
-            // Update current index
             currentPhotoIndex = nextIndex;
             
-            // Swap photos
             pagePhoto.src = pagePhotoNext.src;
             pagePhoto.alt = pagePhotoNext.alt;
             
-            // Reset classes
             pageLeft.className = 'book-page page-left';
             pageRight.className = 'book-page page-right';
             
-            // Preload next image if available
             if (currentPhotoIndex < photoData.length - 1) {
                 pagePhotoNext.src = photoData[currentPhotoIndex + 1].src;
                 pagePhotoNext.alt = photoData[currentPhotoIndex + 1].alt;
@@ -2862,7 +2801,6 @@ Siempre vos. 💗
                 pagePhotoNext.alt = photoData[0].alt;
             }
             
-            // Update caption and navigation
             modalCaption.textContent = photoData[currentPhotoIndex].caption;
             updateNavigationStates();
             
@@ -2870,7 +2808,6 @@ Siempre vos. 💗
         }, 500);
     }
 
-    // Navigate to previous photo with page flip
     function showPrevPhoto() {
         if (isAnimating || currentPhotoIndex <= 0) return;
         
@@ -2878,24 +2815,18 @@ Siempre vos. 💗
         
         const prevIndex = currentPhotoIndex - 1;
         
-        // Update background blur with prev image
         const modalBgBlur = document.getElementById('modal-bg-blur');
         modalBgBlur.style.backgroundImage = `url(${photoData[prevIndex].src})`;
         
-        // Set prev photo in left page
         pagePhoto.src = photoData[prevIndex].src;
         pagePhoto.alt = photoData[prevIndex].alt;
         
-        // Start page flip animation
         pageLeft.classList.add('flipping-prev');
         pageRight.classList.add('flipping-prev');
         
-        // Handle animation end
         setTimeout(() => {
-            // Update current index
             currentPhotoIndex = prevIndex;
             
-            // Update next photo
             if (currentPhotoIndex < photoData.length - 1) {
                 pagePhotoNext.src = photoData[currentPhotoIndex + 1].src;
                 pagePhotoNext.alt = photoData[currentPhotoIndex + 1].alt;
@@ -2904,11 +2835,9 @@ Siempre vos. 💗
                 pagePhotoNext.alt = photoData[0].alt;
             }
             
-            // Reset classes
             pageLeft.className = 'book-page page-left';
             pageRight.className = 'book-page page-right';
             
-            // Update caption and navigation
             modalCaption.textContent = photoData[currentPhotoIndex].caption;
             updateNavigationStates();
             
@@ -2916,7 +2845,6 @@ Siempre vos. 💗
         }, 500);
     }
 
-    // Open modal with specific photo
     function openModal(photoIndex) {
         if (!photoData || photoData.length === 0) {
             initializePhotoData();
@@ -2929,27 +2857,23 @@ Siempre vos. 💗
         
         initializeBookViewer(photoIndex);
         
-        // Ensure modal is visible
         photoModal.style.display = 'flex';
-        photoModal.offsetHeight; // Force reflow
+        photoModal.offsetHeight; 
         
         photoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
-    // Close modal
     function closeModal() {
         photoModal.classList.remove('active');
         document.body.style.overflow = '';
         isAnimating = false;
         
-        // Hide modal after transition
         setTimeout(() => {
             photoModal.style.display = '';
         }, 400);
     }
 
-    // Event listeners
     modalClose.addEventListener('click', closeModal);
     modalPrev.addEventListener('click', showPrevPhoto);
     modalNext.addEventListener('click', showNextPhoto);
@@ -2960,7 +2884,6 @@ Siempre vos. 💗
         }
     });
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (!photoModal.classList.contains('active')) return;
         
@@ -2977,7 +2900,6 @@ Siempre vos. 💗
         }
     });
 
-    // Initialize photo data when book screen opens
     const bookObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
@@ -2994,49 +2916,41 @@ Siempre vos. 💗
     
     bookObserver.observe(bookScreen, { attributes: true });
     
-    // Also try to initialize immediately if book screen is already active
     if (bookScreen.classList.contains('active')) {
         initializePhotoData();
     }
 
-    // Letter modal functionality
     const letterModal = document.getElementById('letter-modal');
     const letterNoteClose = document.getElementById('letter-note-close');
     const letterNoteContent = document.getElementById('letter-note-content');
     const letterNoteTitle = document.querySelector('.letter-note-title');
     const letterNoteDate = document.querySelector('.letter-note-date');
 
-    // Open letter modal
     function openLetterModal(index) {
         const letterCard = document.querySelector(`[data-letter-index="${index}"]`);
         const title = letterCard.querySelector('h3').textContent;
         const date = letterCard.querySelector('.letter-date').textContent;
         const fullText = letterCard.querySelector('.letter-full-text').textContent.trim();
         
-        // Update modal content
         letterNoteTitle.textContent = title;
         letterNoteDate.textContent = date;
         letterNoteContent.textContent = fullText;
         
-        // Show modal
         letterModal.style.display = 'flex';
-        letterModal.offsetHeight; // Force reflow
+        letterModal.offsetHeight;
         letterModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
-    // Close letter modal
     function closeLetterModal() {
         letterModal.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Hide modal after transition
         setTimeout(() => {
             letterModal.style.display = 'none';
         }, 300);
     }
 
-    // Letter cards click handlers
     letterCards.forEach(card => {
         card.addEventListener('click', () => {
             const index = parseInt(card.dataset.letterIndex);
@@ -3044,7 +2958,6 @@ Siempre vos. 💗
         });
     });
 
-    // Close modal events
     letterNoteClose.addEventListener('click', closeLetterModal);
     
     letterModal.addEventListener('click', (e) => {
@@ -3053,36 +2966,30 @@ Siempre vos. 💗
         }
     });
 
-    // Secret modal functionality
     const secretModal = document.getElementById('secret-modal');
     const secretModalClose = document.getElementById('secret-modal-close');
 
-    // Open secret modal
     function openSecretModal() {
         secretModal.style.display = 'flex';
-        secretModal.offsetHeight; // Force reflow
+        secretModal.offsetHeight; 
         secretModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
-    // Close secret modal
     function closeSecretModal() {
         secretModal.classList.remove('active');
         document.body.style.overflow = '';
         
-        // Hide modal after transition
         setTimeout(() => {
             secretModal.style.display = 'none';
         }, 300);
     }
 
-    // Secret button click handler
     secretBtn.addEventListener('click', (e) => {
         e.preventDefault();
         openSecretModal();
     });
 
-    // Close secret modal events
     secretModalClose.addEventListener('click', closeSecretModal);
     
     secretModal.addEventListener('click', (e) => {
@@ -3091,7 +2998,6 @@ Siempre vos. 💗
         }
     });
 
-    // ESC key to close modals
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (letterModal.classList.contains('active')) {
@@ -3102,23 +3008,17 @@ Siempre vos. 💗
             }
         }
     });
-
-    // Letter cards accordion functionality (removed - replaced with modal)
-
-    // Back to main screen
     backToMainBtn.addEventListener('click', () => {
         bookScreen.classList.remove('active');
         mainScreen.classList.add('active');
     });
 
-    // ESC key closes modal
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && photoModal.classList.contains('active')) {
             photoModal.classList.remove('active');
         }
     });
 
-    // Modify YES button to show book screen instead of success screen
     btnYes.addEventListener('click', () => {
         mainScreen.classList.remove('active');
         bookScreen.classList.add('active');
